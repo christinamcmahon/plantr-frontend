@@ -104,7 +104,7 @@ class Plant extends Component {
                             <br />
                             <label>Image: </label>
                             <input
-                                type="image"
+                                type="text"
                                 alt="not available"
                                 value={this.state.image_url}
                                 onChange={this.handleOnChangeImageUrl}
