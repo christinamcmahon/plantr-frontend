@@ -11,7 +11,10 @@ export default function plantsReducer(
         case "ADD_PLANT":
             const newPlant = {
                 id: cuid(),
-                name: action.plant.name
+                name: action.plant.name,
+                notes: action.plant.notes,
+                water_frequency: action.plant.water_frequency,
+                image_url: action.plant.image_url
             };
             return { ...state, plants: [...state.plants, newPlant] };
         case "DELETE_PLANT":
@@ -22,7 +25,10 @@ export default function plantsReducer(
         case "UPDATE_PLANT":
             const updatedPlant = {
                 name: action.plant.name,
-                id: action.plant.id
+                id: action.plant.id,
+                notes: action.plant.notes,
+                water_frequency: action.plant.water_frequency,
+                image_url: action.plant.image_url
             };
             return {
                 ...state,
