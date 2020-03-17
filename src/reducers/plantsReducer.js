@@ -1,27 +1,14 @@
 import cuid from "cuid";
 export const cuidFn = cuid;
 
-export default function plantsReducer(
-    state = {
-        plants: []
-    },
-    action
-) {
+export default function plantsReducer(state = [], action) {
+    let idx
     switch (action.type) {
         case "ADD_PLANT":
-            const newPlant = {
-                id: cuid(),
-                name: action.plant.name,
-                notes: action.plant.notes,
-                water_frequency: action.plant.water_frequency,
-                image_url: action.plant.image_url
-            };
-            return { ...state, plants: [...state.plants, newPlant] };
+            return [...state, action.plant]
         case "DELETE_PLANT":
-            return {
-                ...state,
-                plants: state.plants.filter(plant => plant.id !== action.id)
-            };
+            idx = state.findIndex(plant => plant.id === action.id)
+            return [...state.slice(0, idx), ...state.slice(idx + 1)]
         case "UPDATE_PLANT":
             const updatedPlant = {
                 name: action.plant.name,
@@ -30,12 +17,9 @@ export default function plantsReducer(
                 water_frequency: action.plant.water_frequency,
                 image_url: action.plant.image_url
             };
-            return {
-                ...state,
-                plants: state.plants.map(plant => {
-                    return plant.id === action.plant.id ? updatedPlant : plant;
-                })
-            };
+            return [...state.map(plant => {
+                return plant.id === action.id ? updatedPlant : plant
+            })]
         default:
             return state;
     }

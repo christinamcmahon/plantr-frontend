@@ -71,15 +71,12 @@ class Plant extends Component {
                 <p>{plant.notes}</p>
                 <p>{plant.water_frequency}</p>
                 <img src={plant.image_url} alt="plant" />
-                <button onClick={this.handleEditClick} data-id={plant.id}>
-                    {" "}
-          Edit{" "}
-                </button>
+                <button onClick={this.handleEditClick} data-id={plant.id}>{" "}Edit{" "}</button>
                 <button onClick={this.handleDeleteClick}> Delete </button>
                 {this.state.editMode ? (
                     <div>
                         <form onSubmit={this.handleOnSubmit}>
-                            <label>Edit: </label>
+                            <label>Edit Plant: </label>
                             <br />
                             <label>Name: </label>
                             <input
