@@ -1,7 +1,11 @@
 import cuid from "cuid";
 export const cuidFn = cuid;
 
-export default function plantsReducer(state = [], action) {
+const defaultState = {
+    plants: []
+}
+
+export default function plantsReducer(state = defaultState, action) {
     let idx
     switch (action.type) {
         case "ADD_PLANT":

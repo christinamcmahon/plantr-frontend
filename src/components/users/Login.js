@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router'
 import { loginUser } from '../../actions/user'
-import { bindActionCreators } from 'redux'
 
 class Login extends React.Component {
     state = {
@@ -21,7 +20,7 @@ class Login extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         console.log('%c INSIDE handleSubmit for login form', 'color: red')
-        loginUser(this.state.username, this.state.password)
+        this.props.loginUser(this.state.username, this.state.password)
         this.setState({
             username: '',
             password: ''
@@ -62,7 +61,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('state: ', state)
+    console.log('Login.js state: ', state)
     return {
         authenticatingUser: state.usersReducer.authenticatingUser,
         failedLogin: state.usersReducer.failedLogin,
@@ -72,7 +71,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-    bindActionCreators({ loginUser }, dispatch)
+    return {
+        loginUser: (username, password) => loginUser(username, password)(dispatch)
+    }
 }
 
 // export default withRouter(connect(mapStateToProps, { loginUser })(Login));

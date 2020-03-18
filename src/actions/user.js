@@ -1,9 +1,11 @@
 export const loginUser = (username, password) => {
-    console.log('INSIDE loginUser before return')
-    debugger
+    console.log('INSIDE loginUser before return', process.env.REACT_APP_API_ENDPOINT)
+    // debugger
     return (dispatch) => {
-        // dispatch({ type: "AUTHENTICATING_USER" })
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
+        console.log('INSIDE loginUser AFTER return', username)
+        console.log(password)
+        dispatch({ type: "AUTHENTICATING_USER" })
+        fetch(`http://localhost:3000/api/v1/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,24 +17,28 @@ export const loginUser = (username, password) => {
                     password: password
                 }
             })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    } else {
-                        throw response
-                    }
-                })
-                .then(JSONResponse => {
-                    console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
-                    localStorage.setItem('jwt', JSONResponse.jwt) // where we keep our token
-                    dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
-                    // dispatch(setCurrentUser(JSONResponse.user))
-                })
-                .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
-            // .then((jsonResponse) => {
-            //     localStorage.setItem('jwt', jsonResponse.jwt)
-            //     dispatch(setCurrentUser(jsonResponse.user))
         })
+            .then(response => {
+                console.log(response)
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw response
+                }
+            })
+            .then(JSONResponse => {
+                console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
+                localStorage.setItem('jwt', JSONResponse.jwt) // where we keep our token
+                console.log('JSONRESPONSE:', JSONResponse)
+                dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
+                // dispatch(setCurrentUser(JSONResponse.user))
+            })
+            .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
+        // .then((jsonResponse) => {
+        //     localStorage.setItem('jwt', jsonResponse.jwt)
+        //     dispatch(setCurrentUser(jsonResponse.user))
+        // })
+        console.log('BELOW FETCH')
     }
 }
 

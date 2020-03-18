@@ -8,11 +8,12 @@ const defaultState = {
 
 const usersReducer = (state = defaultState, action) => {
     // console.log('%c INSIDE usersReducer', 'color: red')
-    debugger
+    // debugger
     switch (action.type) {
         case 'SET_CURRENT_USER':
             return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
         case 'AUTHENTICATING_USER': //tells the app we're fetching
+            console.log('AUTHENTICATING USER fired')
             return { ...state, authenticatingUser: true }
         case 'AUTHENTICATED_USER':
             return { ...state, authenticatingUser: false }

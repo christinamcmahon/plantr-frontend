@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PlantInput from "../components/plants/PlantInput.js";
 import Plants from "../components/plants/Plants";
 import { connect } from "react-redux";
-import withAuth from '../hocs/withAuth'
+// import withAuth from '../hocs/withAuth'
 
 class PlantsContainer extends Component {
     render() {
@@ -21,14 +21,18 @@ class PlantsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    plants: state.plants
+    authenticatingUser: state.usersReducer.authenticatingUser,
+    failedLogin: state.usersReducer.failedLogin,
+    error: state.usersReducer.error,
+    loggedIn: state.usersReducer.loggedIn,
+    plants: state.plantsReducer.plants
 });
 
 const mapDispatchToProps = dispatch => ({
     addPlant: plant => dispatch({ type: "ADD_PLANT", plant }),
     deletePlant: id => dispatch({ type: "DELETE_PLANT", id }),
-    updatePlant: plant =>
-        dispatch({ type: "UPDATE_PLANT", plant })
+    updatePlant: plant => dispatch({ type: "UPDATE_PLANT", plant })
 });
 
-export default withAuth(connect(mapStateToProps, mapDispatchToProps)(PlantsContainer));
+// export default withAuth(connect(mapStateToProps, mapDispatchToProps)(PlantsContainer)); // would like to add this back so users are redirected to login if not logged in already
+export default connect(mapStateToProps, mapDispatchToProps)(PlantsContainer);
