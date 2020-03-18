@@ -1,27 +1,31 @@
-import cuid from "cuid";
-export const cuidFn = cuid;
+const defaultState = {
+    user: null,
+    loggedIn: false,
+    authenticatingUser: false,
+    failedLogin: false,
+    error: null
+}
 
-export default function usersReducer(state = [], action) {
-    let idx
+const usersReducer = (state = defaultState, action) => {
+    // console.log('%c INSIDE usersReducer', 'color: red')
+    debugger
     switch (action.type) {
-        case "ADD_USER":
-            return [...state, action.user]
-        case "DELETE_USER":
-            idx = state.findIndex(user => user.id === action.id)
-            return [...state.slice(0, idx), ...state.slice(idx + 1)]
-        case "UPDATE_USER":
-            const updatedUser = {
-                name: action.user.name,
-                id: action.user.id,
-                username: action.user.username,
-                avatar_url: action.user.avatar_url,
-                email: action.user.email,
-                notification: action.user.notification
-            };
-            return [...state.map(user => {
-                return user.id === action.id ? updatedUser : user
-            })]
+        case 'SET_CURRENT_USER':
+            return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
+        case 'AUTHENTICATING_USER': //tells the app we're fetching
+            return { ...state, authenticatingUser: true }
+        case 'AUTHENTICATED_USER':
+            return { ...state, authenticatingUser: false }
+        case 'FAILED_LOGIN': //for error handling
+            return {
+                ...state,
+                failedLogin: true,
+                error: action.payload,
+                authenticatingUser: false
+            }
         default:
-            return state;
+            return state
     }
 }
+
+export default usersReducer

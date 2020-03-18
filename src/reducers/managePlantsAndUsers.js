@@ -2,9 +2,10 @@ import { combineReducers } from 'redux'
 import plantsReducer from './plantsReducer'
 import usersReducer from './usersReducer'
 
+// console.log(usersReducer)
 const rootReducer = combineReducers({
-    plants: plantsReducer,
-    users: usersReducer
+    plantsReducer: plantsReducer,
+    usersReducer: usersReducer
 })
 
 export default rootReducer

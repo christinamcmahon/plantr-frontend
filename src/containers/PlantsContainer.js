@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import PlantInput from "../components/plants/PlantInput.js";
 import Plants from "../components/plants/Plants";
 import { connect } from "react-redux";
+import withAuth from '../hocs/withAuth'
 
 class PlantsContainer extends Component {
     render() {
         return (
             <div>
+                {/* TODO: plant form will render if the user presses the add plant button */}
                 <PlantInput addPlant={this.props.addPlant} />
                 <Plants
                     plants={this.props.plants}
@@ -29,7 +31,4 @@ const mapDispatchToProps = dispatch => ({
         dispatch({ type: "UPDATE_PLANT", plant })
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(PlantsContainer);
+export default withAuth(connect(mapStateToProps, mapDispatchToProps)(PlantsContainer));
