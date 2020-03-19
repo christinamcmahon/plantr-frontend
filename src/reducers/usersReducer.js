@@ -7,8 +7,6 @@ const defaultState = {
 }
 
 const usersReducer = (state = defaultState, action) => {
-    // console.log('%c INSIDE usersReducer', 'color: red')
-    // debugger
     switch (action.type) {
         case 'SET_CURRENT_USER':
             return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }

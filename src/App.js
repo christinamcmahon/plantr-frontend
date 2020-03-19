@@ -1,24 +1,10 @@
 import React, { Fragment } from 'react';
 import PlantsContainer from './containers/PlantsContainer';
-// import UsersContainer from './containers/UsersContainer';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Login from './components/users/Login'
 import Signup from './components/users/Signup'
 // import Nav from './components/nav'
 // import NotFound from './components/notFound'
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <UsersContainer />
-//         <PlantsContainer />
-//       </div>
-//     );
-//   }
-// };
-
-// export default App
 
 const App = props => {
   console.log('%c APP Props: ', 'color: firebrick', props)

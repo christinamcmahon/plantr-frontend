@@ -19,7 +19,6 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('%c INSIDE handleSubmit for login form', 'color: red')
         this.props.loginUser(this.state.username, this.state.password)
         this.setState({
             username: '',
@@ -61,7 +60,6 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('Login.js state: ', state)
     return {
         authenticatingUser: state.usersReducer.authenticatingUser,
         failedLogin: state.usersReducer.failedLogin,
@@ -76,5 +74,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-// export default withRouter(connect(mapStateToProps, { loginUser })(Login));
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

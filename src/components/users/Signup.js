@@ -115,7 +115,6 @@ class Signup extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('Signup.js state: ', state)
     return {
         authenticatingUser: state.usersReducer.authenticatingUser,
         failedLogin: state.usersReducer.failedLogin,
@@ -131,4 +130,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
-// export default Signup;

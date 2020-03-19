@@ -1,10 +1,7 @@
 export const loginUser = (username, password) => {
-    console.log('INSIDE loginUser before return', process.env.REACT_APP_API_ENDPOINT)
-    // debugger
     return (dispatch) => {
-        console.log('INSIDE loginUser AFTER return', username)
         dispatch({ type: "AUTHENTICATING_USER" })
-        fetch(`http://localhost:3000/api/v1/login`, {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,14 +27,8 @@ export const loginUser = (username, password) => {
                 localStorage.setItem('jwt', JSONResponse.jwt) // where we keep our token
                 console.log('JSONRESPONSE:', JSONResponse)
                 dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
-                // dispatch(setCurrentUser(JSONResponse.user))
             })
             .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
-        // .then((jsonResponse) => {
-        //     localStorage.setItem('jwt', jsonResponse.jwt)
-        //     dispatch(setCurrentUser(jsonResponse.user))
-        // })
-        console.log('BELOW FETCH')
     }
 }
 
@@ -70,9 +61,8 @@ export const failedLogin = (errorMsg) => ({
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
 
 export const signUpUser = (user) => {
-    console.log("signupuser:", user)
     return (dispatch) => {
-        fetch(`http://localhost:3000/api/v1/signup`, {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,6 +81,5 @@ export const signUpUser = (user) => {
                 }
             })
             .catch(r => r.json().then(e => console.log(e)))
-
     }
 }
