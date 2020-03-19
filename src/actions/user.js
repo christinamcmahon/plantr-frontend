@@ -3,7 +3,6 @@ export const loginUser = (username, password) => {
     // debugger
     return (dispatch) => {
         console.log('INSIDE loginUser AFTER return', username)
-        console.log(password)
         dispatch({ type: "AUTHENTICATING_USER" })
         fetch(`http://localhost:3000/api/v1/login`, {
             method: 'POST',
@@ -69,3 +68,29 @@ export const failedLogin = (errorMsg) => ({
 
 // tell our app we're currently fetching
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
+
+export const signUpUser = (user) => {
+    console.log("signupuser:", user)
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/v1/signup`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({ user })
+        })
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(response => {
+                        dispatch({
+                            type: "SET_CURRENT_USER",
+                            payload: response.data
+                        });
+                    });
+                }
+            })
+            .catch(r => r.json().then(e => console.log(e)))
+
+    }
+}

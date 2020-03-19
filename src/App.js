@@ -3,6 +3,7 @@ import PlantsContainer from './containers/PlantsContainer';
 // import UsersContainer from './containers/UsersContainer';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Login from './components/users/Login'
+import Signup from './components/users/Signup'
 // import Nav from './components/nav'
 // import NotFound from './components/notFound'
 
@@ -27,6 +28,7 @@ const App = props => {
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/plants" />} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/plants" component={PlantsContainer} />
         {/* <Route component={NotFound} /> */}
       </Switch>
