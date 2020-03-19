@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import PlantInput from "../components/plants/PlantInput.js";
 import Plants from "../components/plants/Plants";
 import { connect } from "react-redux";
-// import withAuth from '../hocs/withAuth'
 
 class PlantsContainer extends Component {
     render() {
+        console.log('INSIDE PLANTS CONTAINER props', this.props)
         return (
             <div>
                 {/* TODO: plant form will render if the user presses the add plant button */}
@@ -21,15 +21,11 @@ class PlantsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    authenticatingUser: state.usersReducer.authenticatingUser,
-    failedLogin: state.usersReducer.failedLogin,
-    error: state.usersReducer.error,
-    loggedIn: state.usersReducer.loggedIn,
     plants: state.plantsReducer.plants
 });
 
 const mapDispatchToProps = dispatch => ({
-    addPlant: plant => dispatch({ type: "ADD_PLANT", plant }),
+    addPlant: plant => dispatch({ type: "ADD_PLANT", payload: plant }),
     deletePlant: id => dispatch({ type: "DELETE_PLANT", id }),
     updatePlant: plant => dispatch({ type: "UPDATE_PLANT", plant })
 });

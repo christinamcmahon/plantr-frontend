@@ -116,9 +116,6 @@ class Signup extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        authenticatingUser: state.usersReducer.authenticatingUser,
-        failedLogin: state.usersReducer.failedLogin,
-        error: state.usersReducer.error,
         loggedIn: state.usersReducer.loggedIn
     }
 }

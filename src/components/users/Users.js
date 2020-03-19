@@ -1,27 +1,29 @@
-import React, { Component } from "react";
-import User from "./User";
+// don't need this unless we want to show a list of all registered users (possibly for friends stretch goal?)
 
-class Users extends Component {
-    render() {
-        let usersList;
-        const { users } = this.props;
-        if (users && users !== []) {
-            usersList = users.map(user => {
-                return (
-                    <User
-                        key={user.id}
-                        user={user}
-                        users={users}
-                        deleteUser={this.props.deleteUser}
-                        updateUser={this.props.updateUser}
-                    />
-                );
-            });
-        } else {
-            return null;
-        }
-        return <ul style={{ listStyleType: "none" }}>{usersList}</ul>;
-    }
-}
+// import React, { Component } from "react";
+// import User from "./User";
 
-export default Users;
+// class Users extends Component {
+//     render() {
+//         let usersList;
+//         const { users } = this.props;
+//         if (users && users !== []) {
+//             usersList = users.map(user => {
+//                 return (
+//                     <User
+//                         key={user.id}
+//                         user={user}
+//                         users={users}
+//                         deleteUser={this.props.deleteUser}
+//                         updateUser={this.props.updateUser}
+//                     />
+//                 );
+//             });
+//         } else {
+//             return null;
+//         }
+//         return <ul style={{ listStyleType: "none" }}>{usersList}</ul>;
+//     }
+// }
+
+// export default Users;

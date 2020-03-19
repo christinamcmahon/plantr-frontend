@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { updatePlant } from '../../actions/plant'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 
 class Plant extends Component {
     state = {
@@ -11,21 +14,22 @@ class Plant extends Component {
 
     handleDeleteClick = e => {
         e.preventDefault();
-        this.props.deletePlant(this.props.plant.id);
+        this.props.deletePlant(this.props.plantProps.id);
     };
 
-    handleEditClick = e => {
-        e.preventDefault();
-        const plant = this.props.plants.find(
-            plant => plant.id === e.target.dataset.id
-        );
-        this.setState({
-            name: plant.name,
-            notes: plant.notes,
-            water_frequency: plant.water_frequency,
-            image_url: plant.image_url,
-            editMode: true
-        });
+    handleEditClick = () => {
+        this.setState({ editMode: true })
+        // console.log('INSIDE PLANT EDIT CLICK', e.target)
+        // const plant = this.props.plantPropss.find(
+        //     plant => plant.id === e.target.dataset.id
+        // );
+        // this.setState({
+        //     name: plant.name,
+        //     notes: plant.notes,
+        //     water_frequency: plant.water_frequency,
+        //     image_url: plant.image_url,
+        //     editMode: true
+        // });
     };
 
     handleOnChangeName = e => {
@@ -51,7 +55,7 @@ class Plant extends Component {
             notes: this.state.notes,
             water_frequency: this.state.water_frequency,
             image_url: this.state.image_url,
-            id: this.props.plant.id
+            id: this.props.plantProps.id
         });
         this.setState({
             editMode: false,
@@ -63,15 +67,15 @@ class Plant extends Component {
     };
 
     render() {
-        const { plant } = this.props;
+        const { plantProps } = this.props;
 
         return (
             <div>
-                <li>{plant.name}</li>
-                <p>{plant.notes}</p>
-                <p>{plant.water_frequency}</p>
-                <img src={plant.image_url} alt="plant" />
-                <button onClick={this.handleEditClick} data-id={plant.id}>{" "}Edit{" "}</button>
+                <li>{plantProps.name}</li>
+                <p>{plantProps.notes}</p>
+                <p>{plantProps.water_frequency}</p>
+                <img src={plantProps.image_url} alt="plant" />
+                <button onClick={this.handleEditClick} data-id={plantProps.id}>{" "}Edit{" "}</button>
                 <button onClick={this.handleDeleteClick}> Delete </button>
                 {this.state.editMode ? (
                     <div>
@@ -116,4 +120,11 @@ class Plant extends Component {
     }
 }
 
-export default Plant;
+const mapDispatchToProps = dispatch => {
+    return {
+        updatePlant: (plant) => updatePlant(plant)(dispatch)
+    }
+}
+
+// export default withRouter(connect(null, mapDispatchToProps))(Plant);
+export default connect(mapDispatchToProps)(Plant);

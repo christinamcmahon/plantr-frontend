@@ -7,12 +7,16 @@ const defaultState = {
 
 export default function plantsReducer(state = defaultState, action) {
     let idx
+    console.log('INSIDE PLANTS REDUCER action', action)
+    console.log('INSIDE PLANTS REDUCER state', state)
     switch (action.type) {
         case "ADD_PLANT":
-            return [...state, action.plant]
+            return {
+                plants: [...state.plants, action.payload]
+            }
         case "DELETE_PLANT":
-            idx = state.findIndex(plant => plant.id === action.id)
-            return [...state.slice(0, idx), ...state.slice(idx + 1)]
+            idx = state.plants.findIndex(plant => plant.id === action.id)
+            return [...state.plants.slice(0, idx), ...state.plants.slice(idx + 1)]
         case "UPDATE_PLANT":
             const updatedPlant = {
                 name: action.plant.name,
@@ -21,9 +25,11 @@ export default function plantsReducer(state = defaultState, action) {
                 water_frequency: action.plant.water_frequency,
                 image_url: action.plant.image_url
             };
-            return [...state.map(plant => {
-                return plant.id === action.id ? updatedPlant : plant
-            })]
+            return {
+                plants: [...state.plants.map(plant => {
+                    return plant.id === action.plant.id ? updatedPlant : plant
+                })]
+            }
         default:
             return state;
     }

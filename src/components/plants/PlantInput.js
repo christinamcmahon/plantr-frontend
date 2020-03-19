@@ -1,15 +1,19 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+import { addPlant } from '../../actions/plant'
 
 class PlantInput extends Component {
     state = {
         name: "",
         notes: "",
         water_frequency: "",
-        image_url: ""
+        image_url: "https://png.pngtree.com/element_our/png_detail/20181229/sprout-plant-graphic-icon-design-template-png_301529.jpg"
     };
 
     handleOnSubmit = e => {
         e.preventDefault();
+        console.log('Props in PlantForm:', this.props)
         this.props.addPlant({
             name: this.state.name,
             notes: this.state.notes,
@@ -20,7 +24,7 @@ class PlantInput extends Component {
             name: "",
             notes: "",
             water_frequency: "",
-            image_url: ""
+            image_url: "https://png.pngtree.com/element_our/png_detail/20181229/sprout-plant-graphic-icon-design-template-png_301529.jpg"
         });
     };
 
@@ -41,6 +45,7 @@ class PlantInput extends Component {
     };
 
     render() {
+        console.log("PLANT INPUT PROPS: ", this.props)
         return (
             <div>
                 <form onSubmit={this.handleOnSubmit}>
@@ -80,4 +85,16 @@ class PlantInput extends Component {
     }
 }
 
-export default PlantInput;
+const mapStateToProps = state => {
+    return {
+        plants: state.plantsReducer.plants
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addPlant: (plant) => addPlant(plant)(dispatch)
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlantInput));

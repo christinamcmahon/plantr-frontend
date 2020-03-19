@@ -6,12 +6,14 @@ class Plants extends Component {
         let plantsList;
         const { plants } = this.props;
         if (plants && plants !== []) {
-            plantsList = plants.map(plant => {
+            plantsList = plants.map(plantInstance => {
+                console.log('INSIDE PLANTS plants', plants)
+                console.log("INSIDE PLANTS plant", plantInstance)
                 return (
                     <Plant
-                        key={plant.id}
-                        plant={plant}
-                        plants={plants}
+                        key={plantInstance.id}
+                        plantProps={plantInstance}
+                        // plants={plants}
                         deletePlant={this.props.deletePlant}
                         updatePlant={this.props.updatePlant}
                     />

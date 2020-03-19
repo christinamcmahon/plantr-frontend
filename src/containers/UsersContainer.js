@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Signup from "../components/users/Signup";
-import Users from "../components/users/Users";
+import User from "../components/users/User";
 import { connect } from "react-redux";
 
 class UsersContainer extends Component {
@@ -8,8 +8,7 @@ class UsersContainer extends Component {
         return (
             <div>
                 <Signup addUser={this.props.addUser} />
-                <Users
-                    users={this.props.users}
+                <User
                     deleteUser={this.props.deleteUser}
                     updateUser={this.props.updateUser}
                 />
@@ -18,18 +17,10 @@ class UsersContainer extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    users: state.users
-});
-
 const mapDispatchToProps = dispatch => ({
     addUser: user => dispatch({ type: "ADD_USER", user }),
     deleteUser: id => dispatch({ type: "DELETE_USER", id }),
-    updateUser: user =>
-        dispatch({ type: "UPDATE_USER", user })
+    updateUser: user => dispatch({ type: "UPDATE_USER", user })
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(UsersContainer);
+export default (mapDispatchToProps)(UsersContainer);
