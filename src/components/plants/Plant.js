@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import { updatePlant, deletePlant } from '../../actions/plant'
 import { connect } from 'react-redux'
 
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import { IconButton, Typography } from "@material-ui/core";
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Collapse from '@material-ui/core/Collapse';
+
 class Plant extends Component {
     state = {
         name: this.props.plantProps.name,
@@ -66,12 +76,43 @@ class Plant extends Component {
 
         return (
             <div>
+                <Card>
+                    <CardHeader
+                        title={plantProps.name}
+                    />
+                    <CardMedia
+                        component="img"
+                        src={plantProps.image_url}
+                        title="plant"
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {plantProps.notes}
+                        </Typography>
+                    </CardContent>
+                    <CardActions disableSpacing>
+                        <IconButton
+                            aria-label="edit"
+                            onClick={this.handleEditClick}
+                        >
+                            <EditIcon />
+                        </IconButton>
+                        <IconButton
+                            aria-label="delete"
+                            onClick={this.handleDeleteClick}
+                        >
+                            <DeleteForeverIcon />
+                        </IconButton>
+                    </CardActions>
+                </Card>
                 <li>{plantProps.name}</li>
                 <p>{plantProps.notes}</p>
                 <p>{plantProps.water_frequency}</p>
                 <img src={plantProps.image_url} alt="plant" width="200" height="200" />
                 <button onClick={this.handleEditClick} data-id={plantProps.id}>{" "}Edit{" "}</button>
                 <button onClick={this.handleDeleteClick}> Delete </button>
+
+                {/* EDIT FORM */}
                 {this.state.editMode ? (
                     <div>
                         <form onSubmit={this.handleOnSubmit}>
