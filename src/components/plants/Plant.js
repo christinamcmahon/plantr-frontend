@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { updatePlant } from '../../actions/plant'
+import { updatePlant, deletePlant } from '../../actions/plant'
 import { connect } from 'react-redux'
 
 class Plant extends Component {
@@ -117,7 +117,8 @@ class Plant extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updatePlant: (plant) => updatePlant(plant)(dispatch)
+        updatePlant: (plant) => updatePlant(plant)(dispatch),
+        deletePlant: (id) => deletePlant(id)(dispatch)
     }
 }
 

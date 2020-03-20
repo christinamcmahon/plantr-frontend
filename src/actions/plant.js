@@ -51,3 +51,20 @@ export const updatePlant = (plant) => {
             .catch(r => r.json().then(e => console.log(e)))
     }
 }
+
+export const deletePlant = (id) => {
+    return (dispatch) => {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/plants/${id}`, {
+            method: 'DELETE'
+        }).then(response => response.json())
+            .then(response => {
+                console.log('INSIDE DELETE plant.js response', response)
+                dispatch({
+                    type: "DELETE_PLANT",
+                    payload: response.data
+                })
+                return response
+            })
+            .catch(err => console.error(err))
+    }
+}

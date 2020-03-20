@@ -6,7 +6,6 @@ const defaultState = {
 }
 
 export default function plantsReducer(state = defaultState, action) {
-    let idx
     console.log('INSIDE PLANTS REDUCER action', action)
     console.log('INSIDE PLANTS REDUCER state', state)
     switch (action.type) {
@@ -16,8 +15,14 @@ export default function plantsReducer(state = defaultState, action) {
                 plants: [...state.plants, action.payload]
             }
         case "DELETE_PLANT":
-            idx = state.plants.findIndex(plant => plant.id === action.id)
-            return [...state.plants.slice(0, idx), ...state.plants.slice(idx + 1)]
+            // idx = state.plants.findIndex(plant => plant.id === action.id)
+            let newPlants = state.plants.filter((plant) => plant.id !== action.payload.id)
+            console.log("INSIDE DELETE_PLANT", action, newPlants)
+            return {
+                ...state,
+                plants: newPlants
+
+            }
         case "UPDATE_PLANT":
             const updatedPlant = {
                 name: action.payload.name,
