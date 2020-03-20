@@ -12,6 +12,7 @@ export default function plantsReducer(state = defaultState, action) {
     switch (action.type) {
         case "ADD_PLANT":
             return {
+                ...state,
                 plants: [...state.plants, action.payload]
             }
         case "DELETE_PLANT":
@@ -20,7 +21,7 @@ export default function plantsReducer(state = defaultState, action) {
         case "UPDATE_PLANT":
             const updatedPlant = {
                 name: action.payload.name,
-                // id: action.payload.id,
+                id: action.payload.id,
                 notes: action.payload.notes,
                 water_frequency: action.payload.water_frequency,
                 image_url: action.payload.image_url
