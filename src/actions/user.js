@@ -74,9 +74,10 @@ export const signUpUser = (user) => {
                 if (response.ok) {
                     response.json()
                         .then(response => {
+                            console.log("INSIDE SIGNUP", response)
                             dispatch({
                                 type: "SET_CURRENT_USER",
-                                payload: response.data
+                                payload: response.user
                             });
                         });
                 }
