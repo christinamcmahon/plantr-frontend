@@ -72,12 +72,13 @@ export const signUpUser = (user) => {
         })
             .then(response => {
                 if (response.ok) {
-                    response.json().then(response => {
-                        dispatch({
-                            type: "SET_CURRENT_USER",
-                            payload: response.data
+                    response.json()
+                        .then(response => {
+                            dispatch({
+                                type: "SET_CURRENT_USER",
+                                payload: response.data
+                            });
                         });
-                    });
                 }
             })
             .catch(r => r.json().then(e => console.log(e)))

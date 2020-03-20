@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     addPlant: plant => dispatch({ type: "ADD_PLANT", payload: plant }),
     deletePlant: id => dispatch({ type: "DELETE_PLANT", id }),
-    updatePlant: plant => dispatch({ type: "UPDATE_PLANT", plant })
+    updatePlant: plant => dispatch({ type: "UPDATE_PLANT", payload: plant })
 });
 
 // export default withAuth(connect(mapStateToProps, mapDispatchToProps)(PlantsContainer)); // would like to add this back so users are redirected to login if not logged in already

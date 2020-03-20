@@ -25,9 +25,9 @@ export const addPlant = (plant) => {
 }
 
 export const updatePlant = (plant) => {
-    console.log('INSIDE UPDATE PLANT plant.js', plant)
+    console.log('INSIDE UPDATE PLANT plant.js', JSON.stringify({ plant }))
     return (dispatch) => {
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/plants${plant.id}`, {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/plants/${plant.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,10 +39,12 @@ export const updatePlant = (plant) => {
                 if (response.ok) {
                     response.json()
                         .then(response => {
+                            console.log('INSIDE UPDATE plant.js', response)
                             dispatch({
                                 type: "UPDATE_PLANT",
-                                payload: response
+                                payload: response.data
                             })
+                            return response
                         })
                 }
             })

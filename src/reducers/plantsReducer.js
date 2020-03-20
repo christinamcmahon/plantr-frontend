@@ -19,15 +19,15 @@ export default function plantsReducer(state = defaultState, action) {
             return [...state.plants.slice(0, idx), ...state.plants.slice(idx + 1)]
         case "UPDATE_PLANT":
             const updatedPlant = {
-                name: action.plant.name,
-                id: action.plant.id,
-                notes: action.plant.notes,
-                water_frequency: action.plant.water_frequency,
-                image_url: action.plant.image_url
+                name: action.payload.name,
+                // id: action.payload.id,
+                notes: action.payload.notes,
+                water_frequency: action.payload.water_frequency,
+                image_url: action.payload.image_url
             };
             return {
                 plants: [...state.plants.map(plant => {
-                    return plant.id === action.plant.id ? updatedPlant : plant
+                    return plant.id === action.payload.id ? updatedPlant : plant
                 })]
             }
         default:

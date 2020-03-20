@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { updatePlant } from '../../actions/plant'
-import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
 class Plant extends Component {
     state = {
-        name: "",
-        notes: "",
-        water_frequency: "",
-        image_url: "",
+        name: this.props.plantProps.name,
+        notes: this.props.plantProps.notes,
+        water_frequency: this.props.plantProps.water_frequency,
+        image_url: this.props.plantProps.image_url,
         editMode: false
     };
 
@@ -19,17 +18,6 @@ class Plant extends Component {
 
     handleEditClick = () => {
         this.setState({ editMode: true })
-        // console.log('INSIDE PLANT EDIT CLICK', e.target)
-        // const plant = this.props.plantPropss.find(
-        //     plant => plant.id === e.target.dataset.id
-        // );
-        // this.setState({
-        //     name: plant.name,
-        //     notes: plant.notes,
-        //     water_frequency: plant.water_frequency,
-        //     image_url: plant.image_url,
-        //     editMode: true
-        // });
     };
 
     handleOnChangeName = e => {
@@ -50,20 +38,27 @@ class Plant extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault();
-        this.props.updatePlant({
+        const updatedPlant = this.props.updatePlant({
             name: this.state.name,
             notes: this.state.notes,
             water_frequency: this.state.water_frequency,
             image_url: this.state.image_url,
             id: this.props.plantProps.id
         });
-        this.setState({
-            editMode: false,
-            name: "",
-            notes: "",
-            water_frequency: "",
-            image_url: "",
-        });
+        if (updatedPlant !== this.state && updatedPlant) {
+            this.setState({
+                editMode: false,
+                name: updatedPlant.name,
+                notes: updatedPlant.notes,
+                water_frequency: updatedPlant.water_frequency,
+                image_url: updatedPlant.image_url,
+            })
+        } else {
+            this.setState({
+                editMode: false
+            })
+        }
+
     };
 
     render() {
@@ -74,7 +69,7 @@ class Plant extends Component {
                 <li>{plantProps.name}</li>
                 <p>{plantProps.notes}</p>
                 <p>{plantProps.water_frequency}</p>
-                <img src={plantProps.image_url} alt="plant" />
+                <img src={plantProps.image_url} alt="plant" width="200" height="200" />
                 <button onClick={this.handleEditClick} data-id={plantProps.id}>{" "}Edit{" "}</button>
                 <button onClick={this.handleDeleteClick}> Delete </button>
                 {this.state.editMode ? (
@@ -126,5 +121,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-// export default withRouter(connect(null, mapDispatchToProps))(Plant);
-export default connect(mapDispatchToProps)(Plant);
+export default connect(null, mapDispatchToProps)(Plant);
