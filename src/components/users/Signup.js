@@ -20,6 +20,7 @@ class Signup extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault();
+        console.log("HANDLING REGISTER SUBMIT")
         this.props.signUpUser({
             name: this.state.name,
             username: this.state.username,
@@ -87,7 +88,7 @@ class Signup extends Component {
                             Notifcations
                     </label>
                         <Checkbox id="notification-checkbox" defaultChecked onChange={this.handleOnChangeNotification} defaultValue="true" />
-                        <Button type="submit" fullWidth variant="contained" color="primary">
+                        <Button type="submit" fullWidth variant="contained" color="primary" onClick={this.handleOnSubmit}>
                             Sign Up
                     </Button>
                     </form>

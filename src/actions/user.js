@@ -82,7 +82,8 @@ export const signUpUser = (user) => {
                             });
                         });
                 }
+                return response
             })
-            .catch(r => r.json().then(e => console.log(e)))
+            .catch(e => console.log(e))
     }
 }
