@@ -38,14 +38,13 @@ class Login extends React.Component {
                 <Grid container justify="center" style={{ marginTop: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }} >
                     <Typography component="h1" variant="h5">
                         Sign in
-                        </Typography>
+                    </Typography>
                     <form onSubmit={this.handleSubmit}>
                         <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
                         <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
-                        <Button type="submit" fullWidth variant="contained" color="primary">
+                        <Button type="submit" fullWidth variant="contained" color="primary" >
                             Sign In
                         </Button>
-                        <br />
                         <Button fullWidth variant="contained" color="primary" onClick={() => { this.props.history.push('/signup') }}>
                             Register
                         </Button>
