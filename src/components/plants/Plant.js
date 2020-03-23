@@ -105,12 +105,6 @@ class Plant extends Component {
                         </IconButton>
                     </CardActions>
                 </Card>
-                <li>{plantProps.name}</li>
-                <p>{plantProps.notes}</p>
-                <p>{plantProps.water_frequency}</p>
-                <img src={plantProps.image_url} alt="plant" width="200" height="200" />
-                <button onClick={this.handleEditClick} data-id={plantProps.id}>{" "}Edit{" "}</button>
-                <button onClick={this.handleDeleteClick}> Delete </button>
 
                 {/* EDIT FORM */}
                 {this.state.editMode ? (
