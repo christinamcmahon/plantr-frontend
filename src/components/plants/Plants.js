@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Plant from "./Plant";
+import { Grid } from "@material-ui/core"
+import { Redirect } from 'react-router'
 
 class Plants extends Component {
     render() {
@@ -10,19 +12,26 @@ class Plants extends Component {
                 console.log('INSIDE PLANTS plants', plants)
                 console.log("INSIDE PLANTS plant", plantInstance)
                 return (
-                    <Plant
-                        key={plantInstance.id}
-                        plantProps={plantInstance}
-                        // plants={plants}
-                        deletePlant={this.props.deletePlant}
-                        updatePlant={this.props.updatePlant}
-                    />
+                    <Grid item xs={12} sm={4}>
+                        <Plant
+                            key={plantInstance.id}
+                            plantProps={plantInstance}
+                            deletePlant={this.props.deletePlant}
+                            updatePlant={this.props.updatePlant}
+                        />
+                    </Grid>
                 );
             });
         } else {
             return null;
         }
-        return <ul style={{ listStyleType: "none" }}>{plantsList}</ul>;
+        // return this.props.loggedIn ? (
+        return (
+            <Grid container spacing={2} style={{ marginTop: '10vh' }}>
+                {plantsList}
+            </Grid>
+        )
+        // ) : <Redirect to="/login" />;
     }
 }
 
