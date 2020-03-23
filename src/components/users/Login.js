@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router'
 import { loginUser } from '../../actions/user'
+import TextField from '@material-ui/core/TextField'
+import { Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 class Login extends React.Component {
     state = {
@@ -31,30 +35,22 @@ class Login extends React.Component {
         return this.props.loggedIn ? (
             <Redirect to="/plants" />
         ) : (
-                <div>
-                    {this.state.error ? <h1>Try again...</h1> : null}
-                    <div>
-                        <form onSubmit={this.handleSubmit}>
-                            <label>Username: </label>
-                            <input
-                                type="text"
-                                placeholder="username"
-                                value={this.state.username}
-                                onChange={this.handleOnChangeUsername}
-                            />
-                            <br />
-                            <label>Password: </label>
-                            <input
-                                type="password"
-                                placeholder="password"
-                                value={this.state.password}
-                                onChange={this.handleOnChangePassword}
-                            />
-                            <br />
-                            <button type="submit">Login</button>
-                        </form>
-                    </div>
-                </div>
+                <Grid container justify="center" style={{ marginTop: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }} >
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                        </Typography>
+                    <form onSubmit={this.handleSubmit}>
+                        <TextField variant="outlined" margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
+                        <TextField variant="outlined" margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
+                        <Button type="submit" fullWidth variant="contained" color="primary">
+                            Sign In
+                        </Button>
+                        <br />
+                        <Button fullWidth variant="contained" color="primary" onClick={() => { this.props.history.push('/signup') }}>
+                            Register
+                        </Button>
+                    </form>
+                </Grid>
             );
     }
 }
