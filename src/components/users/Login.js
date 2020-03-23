@@ -40,8 +40,8 @@ class Login extends React.Component {
                         Sign in
                         </Typography>
                     <form onSubmit={this.handleSubmit}>
-                        <TextField variant="outlined" margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
-                        <TextField variant="outlined" margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
+                        <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
+                        <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
                         <Button type="submit" fullWidth variant="contained" color="primary">
                             Sign In
                         </Button>

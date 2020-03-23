@@ -61,6 +61,7 @@ export const failedLogin = (errorMsg) => ({
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
 
 export const signUpUser = (user) => {
+    console.log('INSIDE SIGNUP', user)
     return (dispatch) => {
         fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/signup`, {
             method: 'POST',

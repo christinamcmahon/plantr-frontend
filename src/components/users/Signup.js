@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router'
 import { signUpUser } from '../../actions/user'
+import TextField from '@material-ui/core/TextField'
+import { Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class Signup extends Component {
     state = {
@@ -63,8 +68,50 @@ class Signup extends Component {
         return this.props.loggedIn ? (
             <Redirect to="/plants" />
         ) : (
-                <div>
-                    <form onSubmit={this.handleOnSubmit}>
+                <Grid container justify="center" style={{ marginTop: '10vh', marginBottom: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }} >
+                    <Typography component="h1" variant="h5">
+                        Register
+                </Typography>
+                    <form onSubmit={this.handleSubmit}>
+                        <TextField margin="normal" required fullWidth label="Full Name" onChange={this.handleOnChangeName} />
+                        <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
+                        <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
+                        <input type="file" display="none" id="upload-avatar" style={{ display: "none" }} />
+                        <label htmlFor="upload-avatar">
+                            <Button variant="outlined" color="primary" component="span">
+                                Upload Avatar
+                        </Button>
+                        </label>
+                        <TextField margin="normal" required fullWidth label="Email" onChange={this.handleOnChangeEmail} type="email" />
+                        <label htmlFor="notification-checkbox">
+                            Notifcations
+                    </label>
+                        <Checkbox id="notification-checkbox" defaultChecked onChange={this.handleOnChangeNotification} defaultValue="true" />
+                        <Button type="submit" fullWidth variant="contained" color="primary">
+                            Sign Up
+                    </Button>
+                    </form>
+                </Grid>
+            );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.usersReducer.loggedIn
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signUpUser: (user) => signUpUser(user)(dispatch)
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
+
+{/* <div>
+<form onSubmit={this.handleOnSubmit}>
                         <label>Full Name: </label>
                         <input
                             type="text"
@@ -109,21 +156,4 @@ class Signup extends Component {
                         <br />
                         <input type="submit" value="Submit" />
                     </form>
-                </div>
-            );
-    }
-}
-
-const mapStateToProps = (state) => {
-    return {
-        loggedIn: state.usersReducer.loggedIn
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        signUpUser: (user) => signUpUser(user)(dispatch)
-    }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
+                </div> */}
