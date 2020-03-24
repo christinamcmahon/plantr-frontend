@@ -10,6 +10,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slider from '@material-ui/core/Slider';
 
 class Plant extends Component {
     state = {
@@ -70,6 +77,11 @@ class Plant extends Component {
 
     };
 
+    handleOpenCloseEditPlant = () => {
+        const toggledValue = !this.state.editMode
+        this.setState({ editMode: toggledValue });
+    };
+
     render() {
         const { plantProps } = this.props;
 
@@ -106,44 +118,33 @@ class Plant extends Component {
                 </Card>
 
                 {/* EDIT FORM */}
-                {this.state.editMode ? (
-                    <div>
-                        <form onSubmit={this.handleOnSubmit}>
-                            <label>Edit Plant: </label>
-                            <br />
-                            <label>Name: </label>
-                            <input
-                                type="text"
-                                value={this.state.name}
-                                onChange={this.handleOnChangeName}
-                            />
-                            <br />
-                            <label>Notes: </label>
-                            <input
-                                type="text"
-                                value={this.state.notes}
-                                onChange={this.handleOnChangeNotes}
-                            />
-                            <br />
-                            <label>Water Frequency: </label>
-                            <input
-                                type="number"
-                                value={this.state.water_frequency}
-                                onChange={this.handleOnChangeWaterFrequency}
-                            />
-                            <br />
-                            <label>Image: </label>
-                            <input
-                                type="text"
-                                alt="not available"
-                                value={this.state.image_url}
-                                onChange={this.handleOnChangeImageUrl}
-                            />
-                            <br />
-                            <input type="submit" value="Submit" />
-                        </form>
-                    </div>
-                ) : null}
+                {/* {this.state.editMode ? ( */}
+                <div>
+                    <Dialog onSubmit={this.handleOnSubmit} open={this.state.editMode} onClose={this.handleOpenCloseEditPlant} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Edit Plant</DialogTitle>
+                        <DialogContent>
+                            <TextField autoFocus label="Name" fullWidth onChange={this.handleOnChangeName} defaultValue={this.state.name} />
+                            <TextField label="Notes" fullWidth onChange={this.handleOnChangeNotes} multiline rows={4} defaultValue={this.state.notes} />
+                            <Typography id="input-slider">
+                                Water Frequency
+                            </Typography>
+                            <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={this.state.water_frequency} valueLabelDisplay="on" max={30} />
+                            {/* <input type="file" display="none" id="upload-photo" style={{ display: "none" }} />
+                            <label htmlFor="upload-photo">
+                                <Button variant="outlined" color="primary" component="span">
+                                    Upload Photo
+                                </Button>
+                            </label> */}
+                            <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button type="submit" fullWidth variant="contained" color="primary" onClick={this.handleOnSubmit}>
+                                Submit
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+                {/* ) : null} */}
             </div>
         );
     }
