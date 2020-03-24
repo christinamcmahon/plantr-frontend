@@ -14,8 +14,8 @@ class Plants extends Component {
                 return (
                     <Grid item xs={12} sm={4}>
                         <Plant
-                            key={plantInstance.plant.id}
-                            plantProps={plantInstance.plant}
+                            key={plantInstance.id}
+                            plantProps={plantInstance}
                             deletePlant={this.props.deletePlant}
                             updatePlant={this.props.updatePlant}
                         />
