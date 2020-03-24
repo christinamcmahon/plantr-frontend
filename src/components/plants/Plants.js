@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Plant from "./Plant";
 import { Grid } from "@material-ui/core"
-import { Redirect } from 'react-router'
 
 class Plants extends Component {
     render() {
@@ -10,13 +9,13 @@ class Plants extends Component {
         const { plants } = this.props;
         if (plants && plants !== []) {
             plantsList = plants.map(plantInstance => {
-                console.log('INSIDE PLANTS plants', plants)
+                // console.log('INSIDE PLANTS plants', plants)
                 console.log("INSIDE PLANTS plant", plantInstance)
                 return (
                     <Grid item xs={12} sm={4}>
                         <Plant
-                            key={plantInstance.id}
-                            plantProps={plantInstance}
+                            key={plantInstance.plant.id}
+                            plantProps={plantInstance.plant}
                             deletePlant={this.props.deletePlant}
                             updatePlant={this.props.updatePlant}
                         />

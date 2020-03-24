@@ -101,6 +101,11 @@ class Plant extends Component {
                             {plantProps.notes}
                         </Typography>
                     </CardContent>
+                    <CardContent>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Water every {plantProps.water_frequency} days
+                        </Typography>
+                    </CardContent>
                     <CardActions disableSpacing>
                         <IconButton
                             aria-label="edit"
