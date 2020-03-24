@@ -8,14 +8,16 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Slider from '@material-ui/core/Slider';
-import Typography from '@material-ui/core/Typography';
+// import Slider from '@material-ui/core/Slider';
+import { IconButton } from "@material-ui/core";
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+
 
 class PlantInput extends Component {
     state = {
         name: "",
         notes: "",
-        water_frequency: "",
+        water_frequency: "7",
         image_url: "https://png.pngtree.com/element_our/png_detail/20181229/sprout-plant-graphic-icon-design-template-png_301529.jpg",
         add_plant_mode: false
     };
@@ -32,7 +34,7 @@ class PlantInput extends Component {
         this.setState({
             name: "",
             notes: "",
-            water_frequency: "",
+            water_frequency: "7",
             image_url: "https://png.pngtree.com/element_our/png_detail/20181229/sprout-plant-graphic-icon-design-template-png_301529.jpg",
             add_plant_mode: false
         });
@@ -53,7 +55,7 @@ class PlantInput extends Component {
 
     handleOnChangeWaterFrequency = e => {
         console.log("INSIDE CHANGE WATER FREQ", e)
-        this.setState({ water_frequency: e.target.innerText });
+        this.setState({ water_frequency: e.target.value });
     };
 
     handleOnChangeImageUrl = e => {
@@ -65,25 +67,29 @@ class PlantInput extends Component {
         console.log("PLANT INPUT STATE: ", this.state)
         return (
             <div>
-                <Button variant="outlined" color="primary" onClick={this.handleOpenCloseAddPlant}>
-                    Add Plant
-                </Button>
+                <div align="center">
+                    <IconButton aria-label="add-plant" onClick={this.handleOpenCloseAddPlant}>
+                        <AddCircleOutlineIcon color="primary" />
+                    </IconButton>
+                </div>
                 <Dialog onSubmit={this.handleOnSubmit} open={this.state.add_plant_mode} onClose={this.handleOpenCloseAddPlant} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add Plant</DialogTitle>
                     <DialogContent>
                         <TextField autoFocus label="Name" fullWidth onChange={this.handleOnChangeName} />
                         <TextField label="Notes" fullWidth onChange={this.handleOnChangeNotes} multiline rows={4} />
-                        <Typography id="input-slider">
+                        <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
+                        {/* <Typography id="input-slider">
+                        <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
                             Water Frequency
-                        </Typography>
-                        <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={7} valueLabelDisplay="on" max={30} />
+                        </Typography> */}
+                        <TextField type="number" label="Water Frequency" max={30} onChange={this.handleOnChangeWaterFrequency} />
+                        {/* <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={7} valueLabelDisplay="on" max={30} /> */}
                         {/* <input type="file" display="none" id="upload-photo" style={{ display: "none" }} />
                         <label htmlFor="upload-photo">
                             <Button variant="outlined" color="primary" component="span">
                                 Upload Photo
                             </Button>
                         </label> */}
-                        <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
                     </DialogContent>
                     <DialogActions>
                         <Button type="submit" fullWidth variant="contained" color="primary" onClick={this.handleOnSubmit}>
