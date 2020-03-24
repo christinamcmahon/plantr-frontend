@@ -10,7 +10,7 @@ class PlantsContainer extends Component {
     }
 
     componentDidMount() {
-        console.log("COMPONENT DID MOUNT", this.props.fetchPlants)
+        // console.log("COMPONENT DID MOUNT", this.props.fetchPlants)
         if (localStorage.getItem("jwt")) {
             api.auth.getCurrentUser().then((data) => {
                 if (!data.error) {

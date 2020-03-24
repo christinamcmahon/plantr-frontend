@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router'
+import { withRouter } from 'react-router'
 import { loginUser } from '../../actions/user'
 import TextField from '@material-ui/core/TextField'
 import { Typography } from '@material-ui/core';
@@ -24,7 +24,7 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("LOGGING IN")
+        // console.log("LOGGING IN")
         this.props.loginUser(this.state.username, this.state.password, () => this.props.history.push("/plants"), (user) => this.props.fetchPlants(user))
         // api.auth.login(this.state).then(res => {
         //     if (!res.message) {

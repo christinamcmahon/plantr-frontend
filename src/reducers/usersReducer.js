@@ -11,7 +11,7 @@ const usersReducer = (state = defaultState, action) => {
         case 'SET_CURRENT_USER':
             return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
         case 'AUTHENTICATING_USER': //tells the app we're fetching
-            console.log('AUTHENTICATING USER fired')
+            // console.log('AUTHENTICATING USER fired')
             return { ...state, authenticatingUser: true }
         case 'AUTHENTICATED_USER':
             return { ...state, authenticatingUser: false }

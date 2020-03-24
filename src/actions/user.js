@@ -15,7 +15,7 @@ export const loginUser = (username, password, goToPlants, fetchPlants) => {
             })
         })
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 if (response.ok) {
                     return response.json()
                 } else {
@@ -23,9 +23,9 @@ export const loginUser = (username, password, goToPlants, fetchPlants) => {
                 }
             })
             .then(JSONResponse => {
-                console.log('INSIDE YE OLDE .THEN', goToPlants)
+                // console.log('INSIDE YE OLDE .THEN', goToPlants)
                 localStorage.setItem('jwt', JSONResponse.jwt) // where we keep our token
-                console.log('JSONRESPONSE:', JSONResponse)
+                // console.log('JSONRESPONSE:', JSONResponse)
                 goToPlants()
                 fetchPlants(JSONResponse.user)
                 dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
@@ -63,7 +63,7 @@ export const failedLogin = (errorMsg) => ({
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
 
 export const signUpUser = (user) => {
-    console.log('INSIDE SIGNUP', user)
+    // console.log('INSIDE SIGNUP', user)
     return (dispatch) => {
         fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/signup`, {
             method: 'POST',
@@ -77,7 +77,7 @@ export const signUpUser = (user) => {
                 if (response.ok) {
                     response.json()
                         .then(response => {
-                            console.log("INSIDE SIGNUP", response)
+                            // console.log("INSIDE SIGNUP", response)
                             dispatch({
                                 type: "SET_CURRENT_USER",
                                 payload: response.user

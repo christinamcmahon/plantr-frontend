@@ -10,7 +10,7 @@ export default function plantsReducer(state = defaultState, action) {
     console.log('INSIDE PLANTS REDUCER state', state)
     switch (action.type) {
         case "FETCH_PLANTS":
-            console.log("INSIDE plantsReducer FETCH", action.payload.plant_info.plants)
+            // console.log("INSIDE plantsReducer FETCH", action.payload.plant_info.plants)
             return {
                 ...state,
                 plants: action.payload.plant_info.plants.map(plant => {
@@ -24,7 +24,6 @@ export default function plantsReducer(state = defaultState, action) {
             }
         case "DELETE_PLANT":
             let newPlants = state.plants.filter((plant) => plant.id !== action.payload.id)
-            console.log("INSIDE DELETE_PLANT", action, newPlants)
             return {
                 ...state,
                 plants: newPlants

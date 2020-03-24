@@ -20,7 +20,7 @@ class Signup extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault();
-        console.log("HANDLING REGISTER SUBMIT")
+        // console.log("HANDLING REGISTER SUBMIT")
         this.props.signUpUser({
             name: this.state.name,
             username: this.state.username,
