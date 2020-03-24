@@ -48,7 +48,7 @@ class Login extends React.Component {
                     <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
                     <Button type="submit" fullWidth variant="contained" color="primary" >
                         Sign In
-                    </Button>
+                        </Button>
                     <Button fullWidth variant="contained" color="primary" onClick={() => { this.props.history.push('/signup') }}>
                         Register
                     </Button>

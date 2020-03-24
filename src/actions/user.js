@@ -89,3 +89,10 @@ export const signUpUser = (user) => {
             .catch(e => console.log(e))
     }
 }
+
+export const logout = () => {
+    return (dispatch) => {
+        localStorage.removeItem("jwt")
+        dispatch({ type: 'LOGOUT' })
+    }
+}
