@@ -1,4 +1,4 @@
-export const loginUser = (username, password, goToPlants) => {
+export const loginUser = (username, password, goToPlants, fetchPlants) => {
     return (dispatch) => {
         dispatch({ type: "AUTHENTICATING_USER" })
         fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
@@ -27,6 +27,7 @@ export const loginUser = (username, password, goToPlants) => {
                 localStorage.setItem('jwt', JSONResponse.jwt) // where we keep our token
                 console.log('JSONRESPONSE:', JSONResponse)
                 goToPlants()
+                fetchPlants(JSONResponse.user)
                 dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
             })
             .catch(e => console.log(e))
