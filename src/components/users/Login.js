@@ -40,10 +40,10 @@ class Login extends React.Component {
         console.log('%c LOGIN FORM PROPS: ', 'color: red', this.props.loggedIn)
         return (
             <Grid container justify="center" style={{ marginTop: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }}>
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
                 <form onSubmit={e => this.handleSubmit(e)}>
+                    <Typography component="h1" variant="h5" align="center">
+                        Sign in
+                    </Typography>
                     <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
                     <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
                     <Button type="submit" fullWidth variant="contained" color="primary" >
