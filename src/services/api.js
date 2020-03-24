@@ -1,7 +1,7 @@
 // all fetch requests will go in here
-const API_ROOT = `http://localhost:4000/api/v1`;
+const API_ROOT = `http://localhost:3000/api/v1`;
 
-const token = () => localStorage.getItem("token");
+const token = () => localStorage.getItem("jwt");
 
 const headers = () => {
     return {
@@ -21,13 +21,15 @@ const login = data => {
     return fetch(`${API_ROOT}/login`, {
         method: "POST",
         headers: headers(),
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            user: data
+        })
     }).then(res => res.json());
 };
 
 const getCurrentUser = () => {
     // console.log("getting current user", headers);
-    return fetch(`${API_ROOT}/profile`, {
+    return fetch(`${API_ROOT}/current_user`, {
         headers: headers()
     }).then(res => {
         // console.log(res)
