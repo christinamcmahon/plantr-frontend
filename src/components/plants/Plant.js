@@ -10,7 +10,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import Collapse from '@material-ui/core/Collapse';
 
 class Plant extends Component {
     state = {
