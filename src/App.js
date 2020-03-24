@@ -19,7 +19,7 @@ const App = props => {
           <Grid item xs={1} sm={2} />
           <Grid item xs={10} sm={8}>
             <Switch>
-              <Route exact path="/" render={() => <Redirect to="/plants" />} />
+              <Route exact path="/" render={() => <Redirect to="/login" />} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/plants" component={PlantsContainer} />
