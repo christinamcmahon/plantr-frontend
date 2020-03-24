@@ -5,6 +5,7 @@ import { Redirect } from 'react-router'
 
 class Plants extends Component {
     render() {
+        console.log("INSIDE Plants.js", this.props)
         let plantsList;
         const { plants } = this.props;
         if (plants && plants !== []) {
@@ -25,13 +26,11 @@ class Plants extends Component {
         } else {
             return null;
         }
-        // return this.props.loggedIn ? (
         return (
             <Grid container spacing={2} style={{ marginTop: '10vh' }}>
                 {plantsList}
             </Grid>
         )
-        // ) : <Redirect to="/login" />;
     }
 }
 
