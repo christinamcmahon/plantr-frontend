@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField'
 import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { api } from '../../services/api';
 
 class Login extends React.Component {
     state = {
@@ -23,34 +24,38 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.loginUser(this.state.username, this.state.password)
-        this.setState({
-            username: '',
-            password: ''
-        })
+        console.log("LOGGING IN")
+        this.props.loginUser(this.state.username, this.state.password, () => this.props.history.push("/plants"))
+        // api.auth.login(this.state).then(res => {
+        //     if (!res.message) {
+        //         console.log("res....", res)
+        //         localStorage.setItem("jwt", res.jwt)
+        //         console.log("About to go to plants...")
+        //         this.props.history.push('/plants')
+        //     }
+        // })
     };
 
     render() {
-        console.log('%c LOGIN FORM PROPS: ', 'color: red', this.props)
-        return this.props.loggedIn ? (
-            <Redirect to="/plants" />
-        ) : (
-                <Grid container justify="center" style={{ marginTop: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }} >
-                    <Typography component="h1" variant="h5">
-                        Sign in
+        console.log('%c LOGIN FORM PROPS: ', 'color: red', this.props.loggedIn)
+        return (
+            <Grid container justify="center" style={{ marginTop: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }} >
+                <Typography component="h1" variant="h5">
+                    Sign in
                     </Typography>
-                    <form onSubmit={this.handleSubmit}>
-                        <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
-                        <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
-                        <Button type="submit" fullWidth variant="contained" color="primary" >
-                            Sign In
+                <form onSubmit={e => this.handleSubmit(e)}>
+                    <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
+                    <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
+                    <Button type="submit" fullWidth variant="contained" color="primary" >
+                        Sign In
                         </Button>
-                        <Button fullWidth variant="contained" color="primary" onClick={() => { this.props.history.push('/signup') }}>
-                            Register
+                    <Button fullWidth variant="contained" color="primary" onClick={() => { this.props.history.push('/signup') }}>
+                        Register
                         </Button>
-                    </form>
-                </Grid>
-            );
+                </form>
+            </Grid>
+        );
+        // }
     }
 }
 
@@ -65,7 +70,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loginUser: (username, password) => loginUser(username, password)(dispatch)
+        loginUser: (username, password, goToPlants) => loginUser(username, password, goToPlants)(dispatch)
     }
 }
 
