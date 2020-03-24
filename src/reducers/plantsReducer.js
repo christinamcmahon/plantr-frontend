@@ -30,16 +30,17 @@ export default function plantsReducer(state = defaultState, action) {
 
             }
         case "UPDATE_PLANT":
+            console.log("INSIDE UPDATE", action.payload)
             const updatedPlant = {
-                name: action.payload.plant.name,
-                id: action.payload.plant.id,
-                notes: action.payload.plant.notes,
-                water_frequency: action.payload.plant.water_frequency,
-                image_url: action.payload.plant.image_url
+                name: action.payload.name,
+                id: action.payload.id,
+                notes: action.payload.notes,
+                water_frequency: action.payload.water_frequency,
+                image_url: action.payload.image_url
             };
             return {
                 plants: [...state.plants.map(plant => {
-                    return plant.id === action.payload.plant.id ? updatedPlant : plant
+                    return plant.id === action.payload.id ? updatedPlant : plant
                 })]
             }
         default:

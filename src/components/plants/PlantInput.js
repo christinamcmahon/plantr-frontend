@@ -30,7 +30,7 @@ class PlantInput extends Component {
             notes: this.state.notes,
             water_frequency: this.state.water_frequency,
             image_url: this.state.image_url
-        });
+        }, this.props.currentUser.id);
         this.setState({
             name: "",
             notes: "",
@@ -104,13 +104,14 @@ class PlantInput extends Component {
 
 const mapStateToProps = state => {
     return {
-        plants: state.plantsReducer.plants
+        plants: state.plantsReducer.plants,
+        currentUser: state.usersReducer.user
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addPlant: (plant) => addPlant(plant)(dispatch)
+        addPlant: (plant, currentUser) => addPlant(plant, currentUser)(dispatch)
     }
 }
 

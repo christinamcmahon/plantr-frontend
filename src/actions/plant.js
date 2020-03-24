@@ -1,5 +1,7 @@
-export const addPlant = (plant) => {
+export const addPlant = (newplant, userId) => {
     return (dispatch) => {
+        console.log("current user", userId)
+        const plant = { newplant, userId }
         fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/plants`, {
             method: 'POST',
             headers: {
