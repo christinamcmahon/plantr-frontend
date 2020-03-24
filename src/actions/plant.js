@@ -20,7 +20,7 @@ export const addPlant = (plant) => {
                         });
                 }
             })
-            .catch(r => r.json().then(e => console.log(e)))
+            .catch(e => console.log(e))
     }
 }
 
@@ -48,7 +48,7 @@ export const updatePlant = (plant) => {
                         })
                 }
             })
-            .catch(r => r.json().then(e => console.log(e)))
+            .catch(e => console.log(e))
     }
 }
 
@@ -65,6 +65,24 @@ export const deletePlant = (id) => {
                 })
                 return response
             })
-            .catch(err => console.error(err))
+            .catch(e => console.log(e))
+    }
+}
+
+export const fetchPlants = (user) => {
+    return (dispatch) => {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${user.id}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log('FETCH PLANTS plant.js', res.plant_info.plants)
+                if (res.ok) {
+                    dispatch({
+                        type: "FETCH_PLANTS",
+                        payload: res.plant_info.plants
+                    })
+                    return res
+                }
+            })
+            .catch(e => console.log(e))
     }
 }
