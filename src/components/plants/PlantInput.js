@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 // import Slider from '@material-ui/core/Slider';
 import { IconButton } from "@material-ui/core";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-
+import Reminder from '../Reminder'
 
 class PlantInput extends Component {
     state = {
@@ -83,6 +83,7 @@ class PlantInput extends Component {
                             Water Frequency
                         </Typography> */}
                         <TextField type="number" label="Water Frequency" max={30} onChange={this.handleOnChangeWaterFrequency} />
+                        <Reminder name={this.state.name} notes={this.state.notes} water_frequency={this.state.water_frequency} />
                         {/* <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={7} valueLabelDisplay="on" max={30} /> */}
                         {/* <input type="file" display="none" id="upload-photo" style={{ display: "none" }} />
                         <label htmlFor="upload-photo">
