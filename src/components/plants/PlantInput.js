@@ -69,7 +69,7 @@ class PlantInput extends Component {
             <div>
                 <div align="center">
                     <IconButton aria-label="add-plant" onClick={this.handleOpenCloseAddPlant}>
-                        <AddCircleOutlineIcon color="primary" />
+                        <AddCircleOutlineIcon />
                     </IconButton>
                 </div>
                 <Dialog onSubmit={this.handleOnSubmit} open={this.state.add_plant_mode} onClose={this.handleOpenCloseAddPlant} aria-labelledby="form-dialog-title">
@@ -92,7 +92,7 @@ class PlantInput extends Component {
                         </label> */}
                     </DialogContent>
                     <DialogActions>
-                        <Button type="submit" fullWidth variant="contained" color="primary" onClick={this.handleOnSubmit}>
+                        <Button type="submit" fullWidth variant="contained" onClick={this.handleOnSubmit}>
                             Submit
                         </Button>
                     </DialogActions>

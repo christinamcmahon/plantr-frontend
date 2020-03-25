@@ -136,14 +136,14 @@ class Plant extends Component {
                             <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={this.state.water_frequency} valueLabelDisplay="on" max={30} />
                             {/* <input type="file" display="none" id="upload-photo" style={{ display: "none" }} />
                             <label htmlFor="upload-photo">
-                                <Button variant="outlined" color="primary" component="span">
+                                <Button variant="outlined"  component="span">
                                     Upload Photo
                                 </Button>
                             </label> */}
                             <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
                         </DialogContent>
                         <DialogActions>
-                            <Button type="submit" fullWidth variant="contained" color="primary" onClick={this.handleOnSubmit}>
+                            <Button type="submit" fullWidth variant="contained" onClick={this.handleOnSubmit}>
                                 Submit
                             </Button>
                         </DialogActions>

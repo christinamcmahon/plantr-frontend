@@ -46,10 +46,10 @@ class Login extends React.Component {
                     </Typography>
                     <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
                     <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
-                    <Button type="submit" fullWidth variant="contained" color="primary" >
+                    <Button type="submit" fullWidth variant="contained"  >
                         Sign In
                         </Button>
-                    <Button fullWidth variant="contained" color="primary" onClick={() => { this.props.history.push('/signup') }}>
+                    <Button fullWidth variant="contained" onClick={() => { this.props.history.push('/signup') }}>
                         Register
                     </Button>
                 </form>
