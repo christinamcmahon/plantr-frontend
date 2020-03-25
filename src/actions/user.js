@@ -62,8 +62,8 @@ export const failedLogin = (errorMsg) => ({
 // tell our app we're currently fetching
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
 
-export const signUpUser = (user) => {
-    // console.log('INSIDE SIGNUP', user)
+export const signUpUser = (user, goToPlants) => {
+    console.log('INSIDE SIGNUP', goToPlants)
     return (dispatch) => {
         fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/signup`, {
             method: 'POST',
@@ -78,10 +78,9 @@ export const signUpUser = (user) => {
                     response.json()
                         .then(response => {
                             // console.log("INSIDE SIGNUP", response)
-                            dispatch({
-                                type: "SET_CURRENT_USER",
-                                payload: response.user
-                            });
+                            localStorage.setItem('jwt', response.jwt)
+                            goToPlants()
+                            dispatch({ type: 'SET_CURRENT_USER', payload: response.user })
                         });
                 }
                 return response

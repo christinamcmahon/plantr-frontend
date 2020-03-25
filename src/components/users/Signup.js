@@ -28,7 +28,7 @@ class Signup extends Component {
             avatar_url: this.state.avatar_url,
             email: this.state.email,
             notification: this.state.notification
-        });
+        }, () => this.props.history.push("/plants"))
         this.setState({
             name: "",
             username: "",
@@ -39,9 +39,9 @@ class Signup extends Component {
         });
     };
 
-    handleOnChangeName = e => {
-        this.setState({ name: e.target.value });
-    };
+    // handleOnChangeName = e => {
+    //     this.setState({ name: e.target.value });
+    // };
 
     handleOnChangeUsername = e => {
         this.setState({ username: e.target.value });
@@ -51,9 +51,9 @@ class Signup extends Component {
         this.setState({ password: e.target.value });
     };
 
-    handleOnChangeAvatarUrl = e => {
-        this.setState({ avatar_url: e.target.value });
-    };
+    // handleOnChangeAvatarUrl = e => {
+    //     this.setState({ avatar_url: e.target.value });
+    // };
 
     handleOnChangeEmail = e => {
         this.setState({ email: e.target.value });
@@ -74,23 +74,23 @@ class Signup extends Component {
                         Register
                 </Typography>
                     <form onSubmit={this.handleSubmit}>
-                        <TextField margin="normal" required fullWidth label="Full Name" onChange={this.handleOnChangeName} />
+                        {/* <TextField margin="normal" required fullWidth label="Full Name" onChange={this.handleOnChangeName} /> */}
                         <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
                         <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
-                        <input type="file" display="none" id="upload-avatar" style={{ display: "none" }} />
+                        {/* <input type="file" display="none" id="upload-avatar" style={{ display: "none" }} />
                         <label htmlFor="upload-avatar">
-                            <Button variant="outlined" color="primary" component="span">
+                            <Button variant="outlined" component="span">
                                 Upload Avatar
-                        </Button>
-                        </label>
+                            </Button>
+                        </label> */}
                         <TextField margin="normal" required fullWidth label="Email" onChange={this.handleOnChangeEmail} type="email" />
                         <label htmlFor="notification-checkbox">
                             Notifcations
-                    </label>
+                        </label>
                         <Checkbox id="notification-checkbox" defaultChecked onChange={this.handleOnChangeNotification} defaultValue="true" />
-                        <Button type="submit" fullWidth variant="contained" color="primary" onClick={this.handleOnSubmit}>
+                        <Button type="submit" fullWidth variant="contained" onClick={this.handleOnSubmit}>
                             Sign Up
-                    </Button>
+                        </Button>
                     </form>
                 </Grid>
             );
@@ -105,7 +105,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signUpUser: (user) => signUpUser(user)(dispatch)
+        signUpUser: (user, goToPlants) => signUpUser(user, goToPlants)(dispatch)
     }
 }
 
