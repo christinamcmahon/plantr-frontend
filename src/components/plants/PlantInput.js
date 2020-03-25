@@ -17,7 +17,7 @@ class PlantInput extends Component {
     state = {
         name: "",
         notes: "",
-        water_frequency: "7",
+        water_frequency: "",
         image_url: "https://png.pngtree.com/element_our/png_detail/20181229/sprout-plant-graphic-icon-design-template-png_301529.jpg",
         add_plant_mode: false
     };
@@ -34,7 +34,7 @@ class PlantInput extends Component {
         this.setState({
             name: "",
             notes: "",
-            water_frequency: "7",
+            water_frequency: "",
             image_url: "https://png.pngtree.com/element_our/png_detail/20181229/sprout-plant-graphic-icon-design-template-png_301529.jpg",
             add_plant_mode: false
         });
@@ -53,10 +53,10 @@ class PlantInput extends Component {
         this.setState({ notes: e.target.value });
     };
 
-    handleOnChangeWaterFrequency = e => {
-        console.log("INSIDE CHANGE WATER FREQ", e)
-        this.setState({ water_frequency: e.target.value });
-    };
+    // handleOnChangeWaterFrequency = e => {
+    //     console.log("INSIDE CHANGE WATER FREQ", e)
+    //     this.setState({ water_frequency: e.target.value });
+    // };
 
     handleOnChangeImageUrl = e => {
         this.setState({ image_url: e.target.value });
@@ -78,12 +78,12 @@ class PlantInput extends Component {
                         <TextField autoFocus label="Name" fullWidth onChange={this.handleOnChangeName} />
                         <TextField label="Notes" fullWidth onChange={this.handleOnChangeNotes} multiline rows={4} />
                         <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
+                        <Reminder name={this.state.name} notes={this.state.notes} />
                         {/* <Typography id="input-slider">
                         <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
                             Water Frequency
                         </Typography> */}
-                        <TextField type="number" label="Water Frequency" max={30} onChange={this.handleOnChangeWaterFrequency} />
-                        <Reminder name={this.state.name} notes={this.state.notes} water_frequency={this.state.water_frequency} />
+                        {/* <TextField type="number" label="Water Frequency" max={30} onChange={this.handleOnChangeWaterFrequency} /> */}
                         {/* <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={7} valueLabelDisplay="on" max={30} /> */}
                         {/* <input type="file" display="none" id="upload-photo" style={{ display: "none" }} />
                         <label htmlFor="upload-photo">

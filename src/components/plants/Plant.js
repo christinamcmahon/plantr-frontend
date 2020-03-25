@@ -16,7 +16,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Slider from '@material-ui/core/Slider';
+// import Slider from '@material-ui/core/Slider';
 
 class Plant extends Component {
     state = {
@@ -44,9 +44,9 @@ class Plant extends Component {
         this.setState({ notes: e.target.value });
     };
 
-    handleOnChangeWaterFrequency = e => {
-        this.setState({ water_frequency: e.target.value });
-    };
+    // handleOnChangeWaterFrequency = e => {
+    //     this.setState({ water_frequency: e.target.value });
+    // };
 
     handleOnChangeImageUrl = e => {
         this.setState({ image_url: e.target.value });
@@ -130,10 +130,10 @@ class Plant extends Component {
                         <DialogContent>
                             <TextField autoFocus label="Name" fullWidth onChange={this.handleOnChangeName} defaultValue={this.state.name} />
                             <TextField label="Notes" fullWidth onChange={this.handleOnChangeNotes} multiline rows={4} defaultValue={this.state.notes} />
-                            <Typography id="input-slider">
+                            {/* <Typography id="input-slider">
                                 Water Frequency
                             </Typography>
-                            <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={this.state.water_frequency} valueLabelDisplay="on" max={30} />
+                            <Slider onChange={this.handleOnChangeWaterFrequency} aria-labelledby="input-slider" defaultValue={this.state.water_frequency} valueLabelDisplay="on" max={30} /> */}
                             {/* <input type="file" display="none" id="upload-photo" style={{ display: "none" }} />
                             <label htmlFor="upload-photo">
                                 <Button variant="outlined"  component="span">
