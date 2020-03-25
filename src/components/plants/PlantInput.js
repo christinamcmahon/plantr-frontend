@@ -75,9 +75,9 @@ class PlantInput extends Component {
                 <Dialog onSubmit={this.handleOnSubmit} open={this.state.add_plant_mode} onClose={this.handleOpenCloseAddPlant} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add Plant</DialogTitle>
                     <DialogContent>
-                        <TextField autoFocus label="Name" fullWidth onChange={this.handleOnChangeName} />
-                        <TextField label="Notes" fullWidth onChange={this.handleOnChangeNotes} multiline rows={4} />
-                        <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
+                        <TextField margin="normal" autoFocus label="Name" fullWidth onChange={this.handleOnChangeName} />
+                        <TextField margin="normal" label="Notes" fullWidth onChange={this.handleOnChangeNotes} multiline rows={4} />
+                        <TextField margin="normal" label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
                         <Reminder name={this.state.name} notes={this.state.notes} />
                         {/* <Typography id="input-slider">
                         <TextField label="Image URL" fullWidth onChange={this.handleOnChangeImageUrl} />
