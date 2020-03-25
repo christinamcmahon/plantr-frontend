@@ -55,14 +55,14 @@ class Signup extends Component {
     //     this.setState({ avatar_url: e.target.value });
     // };
 
-    handleOnChangeEmail = e => {
-        this.setState({ email: e.target.value });
-    };
+    // handleOnChangeEmail = e => {
+    //     this.setState({ email: e.target.value });
+    // };
 
-    handleOnChangeNotification = () => {
-        const toggledValue = !this.state.notification
-        this.setState({ notification: toggledValue });
-    };
+    // handleOnChangeNotification = () => {
+    //     const toggledValue = !this.state.notification
+    //     this.setState({ notification: toggledValue });
+    // };
 
     render() {
         console.log("SIGNUP FORM PROPS: ", this.props)
@@ -83,11 +83,11 @@ class Signup extends Component {
                                 Upload Avatar
                             </Button>
                         </label> */}
-                        <TextField margin="normal" required fullWidth label="Email" onChange={this.handleOnChangeEmail} type="email" />
+                        {/* <TextField margin="normal" required fullWidth label="Email" onChange={this.handleOnChangeEmail} type="email" />
                         <label htmlFor="notification-checkbox">
                             Notifcations
-                        </label>
-                        <Checkbox id="notification-checkbox" defaultChecked onChange={this.handleOnChangeNotification} defaultValue="true" />
+                        </label> */}
+                        {/* <Checkbox id="notification-checkbox" defaultChecked onChange={this.handleOnChangeNotification} defaultValue="true" /> */}
                         <Button type="submit" fullWidth variant="contained" onClick={this.handleOnSubmit}>
                             Sign Up
                         </Button>
