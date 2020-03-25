@@ -22,7 +22,7 @@ export default class Reminder extends React.Component {
     render() {
         console.log(this.props)
         return (
-            <Button variant="contained" fullWidth onClick={this.handleChange}>
+            <Button onClick={this.handleChange}>
                 <AddToCalendar event={this.state.event} />
             </Button>
         );

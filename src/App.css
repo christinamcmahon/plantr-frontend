@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+.react-add-to-calendar__button {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #aab9d4;
+  border-radius: 3px;
+  color: #000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.react-add-to-calendar {
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.react-add-to-calendar {
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.react-add-to-calendar__icon--left {
+  padding-right: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.react-add-to-calendar__wrapper {
+  zoom: 1;
+  cursor: pointer;
+}
+
+.react-add-to-calendar__dropdown ul {
+  list-style: none;
+  margin: 0;
+}
+
+.react-add-to-calendar__dropdown a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.react-add-to-calendar__dropdown {
+  position: absolute;
+  top: 30px;
+  left: 1px;
+  width: 100%;
+  padding: 5px 0 5px 0px;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid #a8a8a8;
+  background-color: #fff;
+  text-align: left;
 }
