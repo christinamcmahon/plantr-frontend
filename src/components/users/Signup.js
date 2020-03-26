@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField'
 import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 
 class Signup extends Component {
     state = {
@@ -70,10 +70,10 @@ class Signup extends Component {
             <Redirect to="/plants" />
         ) : (
                 <Grid container justify="center" style={{ marginTop: '10vh', marginBottom: '10vh', backgroundColor: 'white', padding: '6vh', borderRadius: '10px' }} >
-                    <Typography component="h1" variant="h5">
-                        Register
-                </Typography>
                     <form onSubmit={this.handleSubmit}>
+                        <Typography component="h1" variant="h5" align="center">
+                            Register
+                        </Typography>
                         {/* <TextField margin="normal" required fullWidth label="Full Name" onChange={this.handleOnChangeName} /> */}
                         <TextField margin="normal" required fullWidth label="Username" onChange={this.handleOnChangeUsername} />
                         <TextField margin="normal" required fullWidth label="Password" type="password" onChange={this.handleOnChangePassword} />
