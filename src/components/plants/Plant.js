@@ -95,6 +95,7 @@ class Plant extends Component {
                         component="img"
                         src={plantProps.image_url}
                         title="plant"
+                        height="200"
                     />
                     <CardContent>
                         <Typography variant="body2" color="textSecondary" component="p">
