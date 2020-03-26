@@ -4,6 +4,7 @@ import EcoIcon from '@material-ui/icons/Eco';
 import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { logout } from '../actions/user'
+import { Grid } from '@material-ui/core'
 
 const styles = {
     header: {
@@ -26,11 +27,22 @@ const Header = (props) => {
     return (
         <AppBar position="static" style={styles.header}>
             <Toolbar>
-                <EcoIcon />
-                <Typography>plantr</Typography>
-                {props.currentUser ?
-                    <NavLink to="/login" exact onClick={handleLogout} style={styles.link}>Logout</NavLink>
-                    : null}
+                <Grid container>
+                    <Grid container item xs={1}>
+                        <Grid item>
+                            <EcoIcon />
+                        </Grid>
+                        <Grid item>
+                            <Typography>plantr</Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={10} />
+                    <Grid item xs={1}>
+                        {props.currentUser ?
+                            <NavLink to="/login" exact onClick={handleLogout} style={styles.link}>Logout</NavLink>
+                            : null}
+                    </Grid>
+                </Grid>
             </Toolbar>
         </AppBar>
     )
