@@ -26,7 +26,7 @@ class Plants extends Component {
             return null;
         }
         return (
-            <Grid container spacing={2} style={{ marginTop: '10vh' }}>
+            <Grid container spacing={2}>
                 {plantsList}
             </Grid>
         )

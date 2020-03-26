@@ -17,8 +17,8 @@ const App = props => {
           <Header />
         </Grid>
         <Grid item container>
-          <Grid item xs={1} sm={2} />
-          <Grid item xs={10} sm={8}>
+          <Grid item xs={1} />
+          <Grid item xs={10} >
             <Switch>
               <Route exact path="/" render={() => <Redirect to="/login" />} />
               <Route exact path="/login" component={Login} />
@@ -26,7 +26,7 @@ const App = props => {
               <Route exact path="/plants" component={PlantsContainer} />
             </Switch>
           </Grid>
-          <Grid item xs={1} sm={2} />
+          <Grid item xs={1} />
         </Grid>
       </Grid>
     </Fragment>

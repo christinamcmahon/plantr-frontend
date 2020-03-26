@@ -13,6 +13,12 @@ import { IconButton } from "@material-ui/core";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Reminder from '../Reminder'
 
+const styles = {
+    addButton: {
+        padding: 15
+    }
+}
+
 class PlantInput extends Component {
     state = {
         name: "",
@@ -67,7 +73,7 @@ class PlantInput extends Component {
         console.log("PLANT INPUT STATE: ", this.state)
         return (
             <div>
-                <div align="center">
+                <div align="center" style={styles.addButton}>
                     <IconButton aria-label="add-plant" onClick={this.handleOpenCloseAddPlant}>
                         <AddCircleOutlineIcon />
                     </IconButton>
