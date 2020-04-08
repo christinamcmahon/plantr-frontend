@@ -1,6 +1,8 @@
 # plantr: plant care mangaing app
 This **React** app was created as my final project at Flatiron School. The [backend](https://github.com/christinamcmahon/plantr-backend) was made with **Ruby on Rails**. This app also utitlizes **Redux** in order to decouple data management and UI. Used **JSON Web Tokens** and **Bcrypt** to store encrypted user information client-side for increased security. **Material UI** was used for styling.
 
+[Narrated Video Walkthrough](https://youtu.be/xA3V4tK1dUI)
+
 ## About
 plantr allows users to add plants to their profile with relevant care information and functionality to add reminders for watering or other care to their preferred calendar app (Google Calendar, Apple Calendar, Outlook, etc) with prefilled plant information. 
 
